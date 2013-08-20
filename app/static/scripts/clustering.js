@@ -2,8 +2,8 @@
 // controller - done
 // module - done
 // service - done
-// clusters directive - d3
-// django cluster models
+// clusters directive - done
+// django cluster models - d3
 // service $http call to django
 // clusterData should be called with date, bibleverse
 //
@@ -115,10 +115,9 @@ clusterModule.factory('clusterData', function() {
 });
 
 
-clusterModule.directive('hkukClustersViz', function($log) {
-    // TODO: set these dimensions dynamically
-    var width = 960,
-        height = 2200;
+clusterModule.directive('hkukClustersViz', function($log, $window) {
+    var width = $(window).width() * 0.66;
+         height = $(window).height();
     
     // this would normally be the d3.json callback
     // http://bl.ocks.org/mbostock/4063570
