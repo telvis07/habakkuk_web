@@ -3,6 +3,7 @@
 // module - done
 // service - done
 // clusters directive - done
+// table select/deselect - 
 // django cluster models - d3
 // service $http call to django
 // clusterData should be called with date, bibleverse
@@ -34,16 +35,34 @@ clusterModule.controller('ClusterCtrl',
      // TODO: move to service
      var get_facets = function(){
          return [
-            {value:'john 3:16', count:'10'},
-            {value:'genesis 2:24', count:'8'},
+            {value:'john 3:16', count:'10', selected: false},
+            {value:'genesis 2:24', count:'8', selected: false},
          ];
      };
 
      $scope.selectFacet = function(index){
-         var bv = $scope.facets[index].value;
+         // update row color for selection
+         var selected = !$scope.facets[index].selected;
+         var bv = null;
+         var selected_list = [];
+         $scope.facets[index].selected = selected;
+         if (selected){
+           $log.info("selected "+index+" from facets table");
+           $scope.facets[index].class = "success";
+           bv = $scope.facets[index].value;
+           // TODO: support multiple selections
+         }else {
+           $log.info("de-selected "+index+" from facets table");
+         }
+          for (var i=0; i++; i<$scope.facets.length()){
+            var facet = $scope.facets[i];
+            if (facet.selected){
+              selected_list.push(i);
+            }
+         }
+         // $scope.clusters = clusterData.query(bv);
          $scope.clusters = clusterData.query(bv);
-         $log.info("selected "+index+" from facets table");
-     };
+    };
 
      $scope.facets = get_facets();
      console.log($scope.facets);
