@@ -3,7 +3,8 @@
 // module - done
 // service - done
 // clusters directive - done
-// table select/deselect - 
+// table select/deselect - done
+// django facet model - todo
 // django cluster models - d3
 // service $http call to django
 // clusterData should be called with date, bibleverse
@@ -53,11 +54,12 @@ clusterModule.controller('ClusterCtrl',
            // TODO: support multiple selections
          }else {
            $log.info("de-selected "+index+" from facets table");
+           $scope.facets[index].class = "";
          }
-          for (var i=0; i++; i<$scope.facets.length()){
+          for (var i=0; i<$scope.facets.length; i++){
             var facet = $scope.facets[i];
-            if (facet.selected){
-              selected_list.push(i);
+            if (facet.selected===true){
+              selected_list.push($scope.facets[i].value);
             }
          }
          // $scope.clusters = clusterData.query(bv);
@@ -116,6 +118,7 @@ clusterModule.factory('clusterData', function() {
         if (filter_bibleverse === null){
             return data;
         }else{
+            // TODO: iterate of selected_list and filter based on multiple-selections
             var _filtered = {name:"root", children:[]};
             for (var i=0; i<data.children.length; i++){
                 var cluster = data.children[i];

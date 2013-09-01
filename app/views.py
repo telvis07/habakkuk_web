@@ -1,8 +1,9 @@
-from django.conf import settings
-from django.http import HttpResponse
 from django.shortcuts import render
-import jsonlib2 as json
-import traceback
+import logging
+
+# init logging
+logger = logging.getLogger(__name__)
+query_logger = logging.getLogger('query_logger')
 
 def home(request, template='base.html'):
     return render(request, template, {}) 
