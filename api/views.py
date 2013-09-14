@@ -39,9 +39,3 @@ def query(request, datestr=None):
 
     query_logger.info("query|%s|%s"%(request.user.id, request.path))
     return HttpResponse(json.dumps(response), content_type="application/json")
-
-#def facet_query(dt):
-#    return [
-#            {"value":'john 3:16', "count":'10'},
-#            {"value":'genesis 2:24', "count":'8'},
-#    ]

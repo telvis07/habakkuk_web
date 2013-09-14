@@ -1,30 +1,4 @@
-// TODO:
-// controller - done
-// module - done
-// service - done
-// clusters directive - done
-// table select/deselect - done
-// django facet model - todo
-// django cluster models - d3
-// service $http call to django
-// clusterData should be called with date, bibleverse
-//
-// User selects a facet
-// Clusters are filtered based on that facet
-// for example: clicking on John 3:16
-// will show user clusters
-
-// Default cluster view: clusters for all users
-// Click on a bibleverse facet will show only clusters
-// with that bibleverse
-
-// TODO:
-// create table with data from facet service
-// if no facets have been selected
-//      show all cluster data
-// else
-//      show only clusters with that bibleverse
-
+// angular app to browse habakkuk clusters and facet results
 
 var clusterModule = angular.module("clusterApp",[]);
 
@@ -141,14 +115,7 @@ clusterModule.directive('hkukClustersViz', function($log, $window) {
     var width = $(window).width() * 0.66;
          height = $(window).height();
     
-    // this would normally be the d3.json callback
-    // http://bl.ocks.org/mbostock/4063570
-    // https://github.com/fullscale/dangle/blob/master/src/modules/bar/bar.js
-    // https://github.com/btford/angular-d3-demo/blob/master/app.js
-    // http://www.fullscale.co/dangle/
-    // https://github.com/fullscale/dangle/blob/master/src/modules/pie/pie.js
-    // https://github.com/mbostock/d3/wiki/Cluster-Layout
-    return {
+      return {
         restrict: 'E',
         scope: {clusters:"="},
         link: function(scope, element, attrs){

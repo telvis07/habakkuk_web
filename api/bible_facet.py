@@ -70,4 +70,4 @@ if __name__ == '__main__':
 
     st = datetime.strptime(opts.start,'%Y-%m-%d')
     et = datetime.strptime(opts.end,'%Y-%m-%d')
-    term_facet(date_filter=[st,et],size=opts.size)
+    facets(date_filter=[st,et],size=opts.size)
